@@ -6,7 +6,7 @@ const fs = require('fs')
 const path = require('path')
 
 const workflows = fs.readdirSync(
-  path.join(process.env.GITHUB_WORKSPACE, '.github', 'workflows')
+  path.join(process.env.GITHUB_WORKSPACE, '../', '.github', 'workflows')
 )
 
 async function findUnused(secrets) {
