@@ -19,7 +19,7 @@ async function run() {
       repo
     })
 
-    core.info(`data:    ${data}`)
+    core.info(`data:    ${JSON.parse(data)}`)
 
     core.info(`SECRETS:    
     ${data.secrets}
