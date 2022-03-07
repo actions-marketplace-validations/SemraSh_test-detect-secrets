@@ -1,0 +1,12 @@
+name: detect-unused-secrets
+
+on: [push]
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Detect unused secrets
+        uses: SemraSh/test-detect-secrets@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
