@@ -19,6 +19,17 @@ async function run() {
       repo
     })
 
+    core.info(`listRepoSecrets:    
+    ${await octokit.rest.actions.listRepoSecrets({
+      owner,
+      repo
+    })}
+    `)
+
+    core.info(`SECRETS:    
+    ${secrets}
+    `)
+
     const unusedSecrets = await findUnused(secrets)
 
     if (unusedSecrets.length) {
