@@ -9629,7 +9629,7 @@ async function findUnused(secrets) {
     const executionOutput = await exec.getExecOutput(
       `egrep -r ${secretNames.join('|')} .github/workflows`,
       [],
-      { silent: true, ignoreReturnCode: true }
+      { silent: true, ignoreReturnCode: true, cwd: '../' }
     )
 
     core.info(`EXECUTION OUTPUT ${executionOutput.stdout}`)
