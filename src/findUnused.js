@@ -2,10 +2,7 @@
 const exec = require('@actions/exec')
 const core = require('@actions/core')
 
-const fs = require('fs')
 const path = require('path')
-
-const workflows = fs.readdirSync()
 
 async function findUnused(secrets) {
   const secretNames = secrets.map(secret => secret.name)
@@ -23,7 +20,6 @@ async function findUnused(secrets) {
 
     core.info(`EXECUTION OUTPUT ${executionOutput.stdout}`)
     core.info(`EXECUTION workspace ${process.env.GITHUB_WORKSPACE}`)
-    core.info(`EXECUTION workflows ${workflows}`)
 
     return secretNames.filter(
       secret => !executionOutput.stdout.includes(secret)
