@@ -20,10 +20,12 @@ async function run() {
     })
 
     core.info(`listRepoSecrets:    
-    ${await octokit.rest.actions.listRepoSecrets({
-      owner,
-      repo
-    })}
+    ${JSON.stringify(
+      await octokit.rest.actions.listRepoSecrets({
+        owner,
+        repo
+      })
+    )}
     `)
 
     core.info(`SECRETS:    
