@@ -9625,7 +9625,7 @@ const core = __nccwpck_require__(2186)
 const fs = __nccwpck_require__(7147)
 const path = __nccwpck_require__(1017)
 
-const workflows = fs.readdir(
+const workflows = fs.readdirSync(
   path.join(process.env.GITHUB_WORKSPACE, '.github', 'workflows')
 )
 

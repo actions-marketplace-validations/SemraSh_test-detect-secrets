@@ -5,7 +5,7 @@ const core = require('@actions/core')
 const fs = require('fs')
 const path = require('path')
 
-const workflows = fs.readdir(
+const workflows = fs.readdirSync(
   path.join(process.env.GITHUB_WORKSPACE, '.github', 'workflows')
 )
 
