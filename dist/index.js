@@ -9622,12 +9622,19 @@ module.exports = {
 const exec = __nccwpck_require__(1514)
 const core = __nccwpck_require__(2186)
 
+const fs = __nccwpck_require__(7147)
+const path = __nccwpck_require__(1017)
+
+const workflows = fs.readdir(
+  path.join(process.env.GITHUB_WORKSPACE, '.github', 'workflows')
+)
+
 async function findUnused(secrets) {
   const secretNames = secrets.map(secret => secret.name)
 
   try {
     const executionOutput = await exec.getExecOutput(
-      `egrep -r ${secretNames.join('|')} .github/workflows`,
+      `egrep -r ${secretNames.join('|')} ${workflows}`,
       [],
       {
         silent: true,
@@ -9637,7 +9644,8 @@ async function findUnused(secrets) {
     )
 
     core.info(`EXECUTION OUTPUT ${executionOutput.stdout}`)
-    core.info(`EXECUTION OUTPUT ${process.env.GITHUB_WORKSPACE}`)
+    core.info(`EXECUTION workspace ${process.env.GITHUB_WORKSPACE}`)
+    core.info(`EXECUTION workflows ${workflows}`)
 
     return secretNames.filter(
       secret => !executionOutput.stdout.includes(secret)
