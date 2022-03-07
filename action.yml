@@ -1,0 +1,18 @@
+# See the syntax docs at
+# https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions
+
+name: Detect unused secrets
+description: Detect unused github secrets
+
+inputs:
+  github-token:
+    description: 'Github token'
+    required: true
+
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
+
+branding:
+  icon: 'x'
+  color: 'gray-dark'
