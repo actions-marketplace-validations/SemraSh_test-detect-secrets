@@ -9591,12 +9591,6 @@ async function run() {
       repo
     })
 
-    core.info(`data:    ${data}`)
-
-    core.info(`SECRETS:    
-    ${data.secrets}
-    `)
-
     const unusedSecrets = await findUnused(data.secrets)
 
     if (unusedSecrets.length) {
@@ -9635,6 +9629,8 @@ async function findUnused(secrets) {
       [],
       { silent: true, ignoreReturnCode: true }
     )
+
+    core.info('EXECUTION OUTPUT', executionOutput.stdout)
 
     return secretNames.filter(
       secret => !executionOutput.stdout.includes(secret)

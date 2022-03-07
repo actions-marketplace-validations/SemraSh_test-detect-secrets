@@ -19,12 +19,6 @@ async function run() {
       repo
     })
 
-    core.info(`data:    ${data}`)
-
-    core.info(`SECRETS:    
-    ${data.secrets}
-    `)
-
     const unusedSecrets = await findUnused(data.secrets)
 
     if (unusedSecrets.length) {

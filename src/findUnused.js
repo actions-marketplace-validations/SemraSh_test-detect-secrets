@@ -12,6 +12,8 @@ async function findUnused(secrets) {
       { silent: true, ignoreReturnCode: true }
     )
 
+    core.info('EXECUTION OUTPUT', executionOutput.stdout)
+
     return secretNames.filter(
       secret => !executionOutput.stdout.includes(secret)
     )
