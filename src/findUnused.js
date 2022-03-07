@@ -9,10 +9,15 @@ async function findUnused(secrets) {
     const executionOutput = await exec.getExecOutput(
       `egrep -r ${secretNames.join('|')} .github/workflows`,
       [],
-      { silent: true, ignoreReturnCode: true, cwd: '../' }
+      {
+        silent: true,
+        ignoreReturnCode: true,
+        cwd: process.env.GITHUB_WORKSPACE
+      }
     )
 
     core.info(`EXECUTION OUTPUT ${executionOutput.stdout}`)
+    core.info(`EXECUTION OUTPUT ${process.env.GITHUB_WORKSPACE}`)
 
     return secretNames.filter(
       secret => !executionOutput.stdout.includes(secret)
