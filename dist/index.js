@@ -9586,25 +9586,18 @@ async function run() {
   const { owner, repo } = github.context.repo
 
   try {
-    const { secrets } = await octokit.rest.actions.listRepoSecrets({
+    const data = await octokit.rest.actions.listRepoSecrets({
       owner,
       repo
     })
 
-    core.info(`listRepoSecrets:    
-    ${JSON.stringify(
-      await octokit.rest.actions.listRepoSecrets({
-        owner,
-        repo
-      })
-    )}
-    `)
+    core.info(`data:    ${data}`)
 
     core.info(`SECRETS:    
-    ${secrets}
+    ${data.secrets}
     `)
 
-    const unusedSecrets = await findUnused(secrets)
+    const unusedSecrets = await findUnused(data.secrets)
 
     if (unusedSecrets.length) {
       core.setFailed(`Unused secrets detected: ${unusedSecrets.join(', ')}`)
