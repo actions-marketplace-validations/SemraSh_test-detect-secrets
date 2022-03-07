@@ -22,7 +22,7 @@ async function run() {
     const unusedSecrets = await findUnused(data.secrets)
 
     if (unusedSecrets.length) {
-      core.setFailed(`Unused secrets detected: ${unusedSecrets.join(', ')}`)
+      core.setFailed(`Unused secrets detected: ${unusedSecrets[0].join(', ')}`)
     }
   } catch (err) {
     core.setFailed(`Action failed with error ${err}`)
