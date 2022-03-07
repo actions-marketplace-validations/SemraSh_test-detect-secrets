@@ -5,21 +5,19 @@ const core = require('@actions/core')
 const fs = require('fs')
 const path = require('path')
 
-const workflows = fs.readdirSync(
-  path.join(process.env.GITHUB_WORKSPACE, '.github', 'workflows')
-)
+const workflows = fs.readdirSync()
 
 async function findUnused(secrets) {
   const secretNames = secrets.map(secret => secret.name)
 
   try {
     const executionOutput = await exec.getExecOutput(
-      `egrep -r ${secretNames.join('|')} ${workflows}`,
+      `egrep -r ${secretNames.join('|')} ./`,
       [],
       {
         silent: true,
         ignoreReturnCode: true,
-        cwd: process.env.GITHUB_WORKSPACE
+        cwd: path.join(process.env.GITHUB_WORKSPACE, '.github', 'workflows')
       }
     )
 
