@@ -9586,12 +9586,12 @@ async function run() {
   const { owner, repo } = github.context.repo
 
   try {
-    const data = await octokit.rest.actions.listRepoSecrets({
+    const { data } = await octokit.rest.actions.listRepoSecrets({
       owner,
       repo
     })
 
-    core.info(`data:    ${JSON.parse(data)}`)
+    core.info(`data:    ${data}`)
 
     core.info(`SECRETS:    
     ${data.secrets}
