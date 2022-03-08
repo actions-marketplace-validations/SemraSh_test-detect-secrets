@@ -4,6 +4,11 @@
 name: test test sm
 description: test test sm
 
+inputs:
+  token:
+    description: 'Generated token'
+    required: true
+
 runs:
   using: 'node16'
   main: 'dist/index.js'
