@@ -9,8 +9,6 @@ async function run() {
   *** ACTION RUN - START ***
   `)
 
-  core.info(__dirname)
-
   const githubToken = core.getInput('github-token', { required: true })
   const octokit = github.getOctokit(githubToken)
   const { owner, repo } = github.context.repo
