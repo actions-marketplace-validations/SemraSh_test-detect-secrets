@@ -4,15 +4,10 @@
 name: Detect unused secrets
 description: Detect unused github secrets
 
-inputs:
-  github-token:
-    description: 'Github token'
-    required: true
-
 runs:
   using: 'node16'
   main: 'dist/index.js'
 
 branding:
-  icon: 'x'
+  icon: 'y'
   color: 'gray-dark'
