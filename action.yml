@@ -5,7 +5,7 @@ name: test test sm
 description: test test sm
 
 inputs:
-  token:
+  github-token:
     description: 'Generated token'
     required: true
 
