@@ -18,9 +18,6 @@ async function findUnused(secrets) {
       }
     )
 
-    core.info(`EXECUTION OUTPUT ${executionOutput.stdout}`)
-    core.info(`EXECUTION workspace ${process.env.GITHUB_WORKSPACE}`)
-
     return secretNames.filter(
       secret => !executionOutput.stdout.includes(secret)
     )
