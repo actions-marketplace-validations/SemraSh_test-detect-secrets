@@ -16,7 +16,7 @@ jobs:
       - name: Detect unused secrets
         uses: nearform/github-action-detect-unused-secrets@v1
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 ## Usage
